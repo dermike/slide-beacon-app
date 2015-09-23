@@ -1,15 +1,11 @@
-var app = require('app');
-var BrowserWindow = require('browser-window')
+var app = require('app'),
+    BrowserWindow = require('browser-window')
     ipc = require('ipc'),
-    Menu = require('menu');
-
-
-var WebSocketServer = require('ws').Server,
+    Menu = require('menu'),
+    WebSocketServer = require('ws').Server,
     wss = new WebSocketServer({ port: 1234 }),
     EddystoneBeacon = require('eddystone-beacon'),
-    _ws = null;
-
-var mainWindow = null;
+    mainWindow = null;
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function() {
@@ -18,21 +14,21 @@ app.on('window-all-closed', function() {
   }
 });
 
-function setUrl(url) {
+function setUrl(url, ws) {
   try {
     EddystoneBeacon.advertiseUrl(url);
     mainWindow.webContents.send('status', [url, 'Advertising', true]);
     console.log('advertising: ' + url);
-    if (_ws) {
-      _ws.send('advertising: ' + url);
+    if (ws) {
+      ws.send('advertising: ' + url);
     }
     console.log();
   }
   catch(e) {
     console.log('error: ' + e);
     mainWindow.webContents.send('status', [e.message, 'Error', false]);
-    if (_ws) {
-      _ws.send('error: ' + e);
+    if (ws) {
+      ws.send('error: ' + e);
     }
     console.log();
   } 
@@ -77,10 +73,9 @@ app.on('ready', function() {
   
   wss.on('connection', function connection(ws) {
     ws.on('message', function incoming(url) {
-      _ws = ws;
       console.log('received: ' + url);
       ws.send('received: ' + url);
-      setUrl(url);
+      setUrl(url, ws);
     });
   });
   
