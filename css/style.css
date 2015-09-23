@@ -1,0 +1,105 @@
+body {
+  background: rgb(163, 195, 167);
+  font-family: -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+#eddystone {
+  height: 180px;
+  width: 768px;
+  max-width: 100%;
+}
+
+#status {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  color: #fff;
+  background-color: #870052;
+  font-size: 16px;
+}
+
+.vertical-center {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  margin: auto;
+}
+
+#header {
+  color: rgb(110, 145, 124);
+  font-size: 80px;
+  text-align: center;
+  margin: 0;
+}
+
+body.error #header {
+  color: #993333;
+}
+
+#status ul {
+  width: 100%;
+  display: table;
+  table-layout: fixed;
+  margin: 0;
+  padding: 0;
+}
+
+#status ul li {
+  display: table-cell;
+  padding: 2.2em 1em;
+}
+
+.error {
+  background-color: #ff9999;
+}
+
+.active {
+  background-color: rgb(110, 145, 124);
+}
+
+body.error .active {
+  background-color: #993333;
+}
+
+#dialog {
+  background-color: rgba(0,0,0,0.8);
+  position: absolute;
+  z-index: 1000;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  text-align: center;
+}
+
+input {
+  float: left;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: inherit;
+  height: 45px;
+  border: 2px solid #fafafa;
+  padding: 0 10px;
+}
+
+#input {
+  box-shadow: none;
+  -webkit-appearance: caret;
+  font-size: 22px;
+  width: 70%;
+}
+
+#submit {
+  -webkit-appearance: none;
+  width: 30%;
+  font-size: 15px;
+  background-color: #d40963;
+  color: #fafafa;
+  text-transform: uppercase;
+  outline: none;
+}
+
+.hide {
+  display: none;
+}

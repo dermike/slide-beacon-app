@@ -1,0 +1,22 @@
+{
+  "name": "electron-eddystone-advertiser",
+  "version": "1.0.0",
+  "description": "Electron app to broadcast URLs as an Eddystone Physical Web beacon",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "electron"
+  ],
+  "author": "Mikael Jergefelt",
+  "license": "ISC",
+  "devDependencies": {
+    "electron-prebuilt": "^0.33.1",
+    "electron-rebuild": "^1.0.0"
+  },
+  "dependencies": {
+    "eddystone-beacon": "^1.0.3",
+    "ws": "^0.8.0"
+  }
+}
