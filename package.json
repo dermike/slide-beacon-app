@@ -19,5 +19,8 @@
   "dependencies": {
     "eddystone-beacon": "^1.0.3",
     "ws": "^0.8.0"
+  },
+  "scripts": {
+    "package": "electron-packager ./ EddystoneURL --platform=darwin --arch=x64 --version=0.33.1 --ignore=node_modules/electron-rebuild --asar --icon=icon.icns"
   }
 }
