@@ -58,7 +58,7 @@
         }
         
         dialog.addEventListener('click', function(e) {
-          if (e.target.id === 'submit' && input.value) {
+          if (e.target.id === 'submit') {
             setUrl(input.value);
           } else if (e.target.id === 'input') {
             e.preventDefault();
