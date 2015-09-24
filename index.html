@@ -65,9 +65,12 @@
           }
         });
         
-        input.addEventListener('keydown', function(e) {
-          if (e.keyCode === 13) {
+        document.addEventListener('keydown', function(e) {
+          if (e.target === 'input' && e.keyCode === 13 && input.value) {
             setUrl(input.value);
+          } else if (e.keyCode === 27) {
+            dialog.classList.add('hide');
+            input.value = '';
           }
         });
 
