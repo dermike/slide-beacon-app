@@ -41,10 +41,18 @@ app.on('ready', function() {
       label: 'Eddystone',
       submenu: [
         {
-          label: 'Set URL',
-          accelerator: 'Command+N',
+          label: 'Advertise URL',
+          accelerator: 'Command+A',
           click: function() {
             mainWindow.webContents.send('enter-url', 'go');
+          }
+        },
+        {
+          label: 'Stop advertising',
+          accelerator: 'Command+S',
+          click: function() {
+            EddystoneBeacon.stop();
+            mainWindow.webContents.send('status', ['Use bookmarklet or Cmd+A to enter', 'Waiting', true]);
           }
         },
         {
@@ -68,7 +76,7 @@ app.on('ready', function() {
   });
   
   mainWindow.webContents.on('did-finish-load', function() {
-    mainWindow.webContents.send('status', ['Use bookmarklet or Cmd+N to enter', 'Waiting', true]);
+    mainWindow.webContents.send('status', ['Use bookmarklet or Cmd+A to enter', 'Waiting', true]);
   });
   
   wss.on('connection', function connection(ws) {
