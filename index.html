@@ -52,7 +52,9 @@
         function setUrl(url) {
           input.value = '';
           dialog.classList.add('hide');
-          ipc.send('set-url', url);
+          if (url) {
+            ipc.send('set-url', url);
+          }
         }
         
         dialog.addEventListener('click', function(e) {
@@ -66,7 +68,7 @@
         });
         
         document.addEventListener('keydown', function(e) {
-          if (e.target.id === 'input' && e.keyCode === 13 && input.value) {
+          if (e.target.id === 'input' && e.keyCode === 13) {
             setUrl(input.value);
           } else if (e.keyCode === 27) {
             dialog.classList.add('hide');
