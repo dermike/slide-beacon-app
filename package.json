@@ -4,7 +4,7 @@
   "description": "Electron app to broadcast URLs as an Eddystone Physical Web beacon",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "package": "node ./node_modules/electron-packager/index.js ./ EddystoneURL --platform=darwin --arch=x64 --version=0.33.1 --ignore=node_modules/electron-rebuild --asar --icon=icon.icns"
   },
   "keywords": [
     "electron"
@@ -12,15 +12,12 @@
   "author": "Mikael Jergefelt",
   "license": "ISC",
   "devDependencies": {
-    "electron-packager": "^5.1.0",
-    "electron-prebuilt": "^0.33.1",
-    "electron-rebuild": "^1.0.0"
+    "electron-packager": "5.1.0",
+    "electron-prebuilt": "0.33.4",
+    "electron-rebuild": "1.0.1"
   },
   "dependencies": {
-    "eddystone-beacon": "^1.0.3",
-    "ws": "^0.8.0"
-  },
-  "scripts": {
-    "package": "node ./node_modules/electron-packager/index.js ./ EddystoneURL --platform=darwin --arch=x64 --version=0.33.1 --ignore=node_modules/electron-rebuild --asar --icon=icon.icns"
+    "eddystone-beacon": "1.0.3",
+    "ws": "0.8.0"
   }
 }
