@@ -4,7 +4,7 @@
   "description": "Electron app to broadcast URLs as an Eddystone Physical Web beacon",
   "main": "main.js",
   "scripts": {
-    "package": "node ./node_modules/electron-packager/cli.js ./ EddystoneURL --platform=darwin --arch=x64 --version=0.33.1 --ignore=node_modules/electron-rebuild --asar --icon=icon.icns"
+    "package": "node ./node_modules/electron-packager/cli.js ./ EddystoneURL --platform=darwin --arch=x64 --version=0.33.5 --ignore=node_modules/electron-rebuild --asar --icon=icon.icns"
   },
   "repository": {
     "type": "git",
@@ -17,7 +17,7 @@
   "license": "ISC",
   "devDependencies": {
     "electron-packager": "5.1.0",
-    "electron-prebuilt": "0.33.4",
+    "electron-prebuilt": "0.33.5",
     "electron-rebuild": "1.0.1"
   },
   "dependencies": {
