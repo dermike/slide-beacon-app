@@ -50,7 +50,7 @@ app.on('ready', function() {
           accelerator: 'Command+S',
           click: function() {
             EddystoneBeacon.stop();
-            mainWindow.webContents.send('status', ['Use bookmarklet or Cmd+A to enter', 'Waiting', true]);
+            mainWindow.webContents.send('status', ['Use bookmarklet or <span class="key" aria-label="command">&#8984;</span> + <span class="key">A</span> to enter', 'Waiting', true]);
           }
         },
         {
@@ -74,7 +74,7 @@ app.on('ready', function() {
   });
   
   mainWindow.webContents.on('did-finish-load', function() {
-    mainWindow.webContents.send('status', ['Use bookmarklet or Cmd+A to enter', 'Waiting', true]);
+    mainWindow.webContents.send('status', ['Use bookmarklet or <span class="key" aria-label="command">&#8984;</span> + <span class="key">A</span> to enter', 'Waiting', true]);
   });
   
   wss.on('connection', function connection(ws) {

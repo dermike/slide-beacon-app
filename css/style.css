@@ -1,3 +1,11 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 body {
   background: rgb(163, 195, 167);
   font-family: -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -102,4 +110,12 @@ input {
 
 .hide {
   display: none;
+}
+
+.key {
+  background-color: #000;
+  border-radius: 3px;
+  color: #fff;
+  padding: 5px;
+  box-shadow: 1px 1px #660033;
 }
