@@ -33,7 +33,7 @@ node ./node_modules/.bin/electron-rebuild
 Run as Electron app:
 
 ```sh
-electron .
+npm run electron
 ```
 
 Package as standalone Mac OSX app:
