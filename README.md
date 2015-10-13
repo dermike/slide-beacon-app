@@ -14,7 +14,6 @@ First try using Electron.
 ### Prerequisites
 
 * [Node.js](https://nodejs.org/)
-* [Electron](http://electron.atom.io)
 
 ### Install and build
 
