@@ -4,7 +4,7 @@ Share links from your computer using this app to broadcast them as an Eddystone 
 
 ![](https://raw.githubusercontent.com/dermike/electron-slide-beacon/master/screenshot/screenshot.jpg)
 
-**[Download pre-built binary](https://github.com/dermike/electron-slide-beacon/releases/download/v0.1.0/EddystoneURL_0.1.0.zip)** or follow the instructions below to run with Electron or build your own binary.
+**[Download pre-built binary](https://github.com/dermike/electron-slide-beacon/releases/download/0.1.2/EddystoneURL.zip)** or follow the instructions below to run with Electron or build your own binary.
 
 Use this [Eddystone URL bookmarklet](https://github.com/dermike/eddystone-bookmarklet) in your browser for quick sharing, or enter manually.
 
