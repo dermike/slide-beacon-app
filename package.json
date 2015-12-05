@@ -22,7 +22,7 @@
     "electron-rebuild": "1.0.2"
   },
   "dependencies": {
-    "eddystone-beacon": "1.0.4",
+    "eddystone-beacon": "1.0.5",
     "ws": "0.8.1"
   }
 }
