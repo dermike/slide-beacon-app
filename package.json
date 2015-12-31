@@ -17,8 +17,8 @@
   "author": "Mikael Jergefelt",
   "license": "ISC",
   "devDependencies": {
-    "electron-packager": "5.1.1",
-    "electron-prebuilt": "0.35.1",
+    "electron-packager": "5.2.0",
+    "electron-prebuilt": "0.36.2",
     "electron-rebuild": "1.0.2"
   },
   "dependencies": {
