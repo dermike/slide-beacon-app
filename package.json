@@ -23,6 +23,6 @@
   },
   "dependencies": {
     "eddystone-beacon": "1.0.5",
-    "ws": "1.0.0"
+    "ws": "1.0.1"
   }
 }
