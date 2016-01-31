@@ -32,6 +32,9 @@ body {
   position: absolute;
   top: 0; right: 0; bottom: 0; left: 0;
   margin: auto;
+  animation-fill-mode: both;
+  animation-duration: 0.4s;
+  animation-name: fadeInDown;
 }
 
 #header {
@@ -118,4 +121,16 @@ input {
   color: #fff;
   padding: 5px;
   box-shadow: 1px 1px #660033;
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
