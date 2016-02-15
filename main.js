@@ -58,6 +58,12 @@ app.on('ready', () => {
           'click': () => { app.quit(); }
         }
       ]
+    },
+    {
+      'label': 'Edit',
+      'submenu': [
+        { 'label': 'Paste', 'accelerator': 'CmdOrCtrl+V', 'selector': 'paste:' }
+      ]
     }
   ];
 
