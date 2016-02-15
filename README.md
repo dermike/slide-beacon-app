@@ -11,7 +11,7 @@ Use this [Eddystone URL bookmarklet](https://github.com/dermike/eddystone-bookma
 Note:
 First try using Electron.
 
-### Prerequisites
+### Prerequisites to build
 
 * [Node.js](https://nodejs.org/)
 * [Xcode](https://developer.apple.com/xcode/download/) and its `Command Line Tools`. You can find this under the menu `Xcode -> Preferences -> Downloads`
