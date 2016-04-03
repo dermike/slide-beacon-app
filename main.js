@@ -16,7 +16,7 @@ app.on('window-all-closed', () => {
   app.quit();
 });
 
-function setUrl(url, ws) {
+function setBleUrl(url, ws) {
   try {
     EddystoneBeacon.advertiseUrl(url);
     mainWindow.webContents.send('status', [url, 'Advertising', true]);
@@ -25,6 +25,7 @@ function setUrl(url, ws) {
       ws.send('ble advertising: ' + url);
     }
     console.log();
+    setMdnsUrl(url, ws)
   } catch (e) {
     console.log('error: ' + e);
     mainWindow.webContents.send('status', [e.message, 'Error', false]);
@@ -33,9 +34,12 @@ function setUrl(url, ws) {
     }
     console.log();
   }
+}
+
+function setMdnsUrl(url, ws) {
   try {
     let urlParts = url.split('/')
-    mdnsAd = new mdns.Advertisement(mdns.tcp('http'), 80, {
+    mdnsAd = new mdns.Advertisement(mdns.tcp(urlParts[0].replace(':', '')), 80, {
       name: url,
       txtRecord: {
         path: urlParts[3]
@@ -119,6 +123,6 @@ app.on('ready', () => {
   });
 
   ipc.on('set-url', (event, arg) => {
-    setUrl(arg);
+    setBleUrl(arg);
   });
 });
