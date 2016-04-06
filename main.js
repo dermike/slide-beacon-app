@@ -19,55 +19,63 @@ app.on('window-all-closed', () => {
 });
 
 function setBleUrl(url, ws) {
-  try {
-    EddystoneBeacon.advertiseUrl(url);
-    activeModes += '<span class="modes">Bluetooth</span>';
-    mainWindow.webContents.send('status', [`${url} ${activeModes}`, 'Advertising', true]);
-    console.log(`ble advertising: ${url}`);
-    if (ws) {
-      ws.send(`ble advertising: ${url}`);
+  return new Promise((resolve, reject) => {
+    try {
+      EddystoneBeacon.advertiseUrl(url);
+      activeModes += '<span class="modes">Bluetooth</span>';
+      mainWindow.webContents.send('status', [`${url} ${activeModes}`, 'Advertising', true]);
+      console.log(`ble advertising: ${url}`);
+      if (ws) {
+        ws.send(`ble advertising: ${url}`);
+      }
+      resolve();
+    } catch (e) {
+      console.log(`error: ${e}`);
+      mainWindow.webContents.send('status', [e.message, 'Error', false]);
+      if (ws) {
+        ws.send(`error: ${e}`);
+      }
+      reject();
     }
-  } catch (e) {
-    console.log(`error: ${e}`);
-    mainWindow.webContents.send('status', [e.message, 'Error', false]);
-    if (ws) {
-      ws.send(`error: ${e}`);
-    }
-  }
+  });
 }
 
 function setMdnsUrl(url, ws) {
-  try {
-    let urlParts = url.split('/'),
-      protocol = urlParts[0].replace(':', ''),
-      port = protocol === 'https' ? 443 : 80,
-      host = urlParts[2],
-      path = urlParts.filter((part, i) => {
-        return i > 2 ? part : false;
-      }).join('/');
-    mdnsAd = new mdns.Advertisement(mdns.tcp(protocol), port, {
-      'name': url,
-      'txtRecord': {
-        'path': path
-      },
-      'host': host,
-      'domain': 'local',
-      'ip': host
-    });
-    mdnsAd.start();
-    activeModes += '<span class="modes">mDNS</span>';
-    mainWindow.webContents.send('status', [`${url} ${activeModes}`, 'Advertising', true]);
-    console.log(`mdns advertising: ${url}`);
-    if (ws) {
-      ws.send(`mdns advertising: ${url}`);
+  return new Promise((resolve, reject) => {
+    try {
+      let urlParts = url.split('/'),
+        protocol = urlParts[0].replace(':', ''),
+        port = protocol === 'https' ? 443 : 80,
+        host = urlParts[2],
+        path = urlParts.filter((part, i) => {
+          return i > 2 ? part : false;
+        }).join('/');
+      mdnsAd = new mdns.Advertisement(mdns.tcp(protocol), port, {
+        'name': url,
+        'txtRecord': {
+          'path': path
+        },
+        'host': host,
+        'domain': 'local',
+        'ip': host
+      });
+      mdnsAd.start();
+      activeModes += '<span class="modes">mDNS</span>';
+      mainWindow.webContents.send('status', [`${url} ${activeModes}`, 'Advertising', true]);
+      console.log(`mdns advertising: ${url}`);
+      if (ws) {
+        ws.send(`mdns advertising: ${url}`);
+      }
+      resolve();
+    } catch (e) {
+      console.log(`error: ${e}`);
+      mainWindow.webContents.send('status', [e.message, 'Error', false]);
+      if (ws) {
+        ws.send(`error: ${e}`);
+      }
+      reject();
     }
-  } catch (e) {
-    console.log(`error: ${e}`);
-    mainWindow.webContents.send('status', [e.message, 'Error', false]);
-    if (ws) {
-      ws.send(`error: ${e}`);
-    }
-  }
+  });
 }
 
 function setUrl(url, ws) {
@@ -77,9 +85,13 @@ function setUrl(url, ws) {
   }
   if (modeBLE.checked || modeMDNS.checked) {
     if (modeBLE.checked) {
-      setBleUrl(url, ws);
+      setBleUrl(url, ws).then(() => {
+        if (modeMDNS.checked) {
+          setMdnsUrl(url, ws);
+        }
+      });
     }
-    if (modeMDNS.checked) {
+    if (!modeBLE.checked && modeMDNS.checked) {
       setMdnsUrl(url, ws);
     }
   } else {
