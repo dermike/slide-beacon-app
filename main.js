@@ -23,15 +23,15 @@ function setBleUrl(url, ws) {
     EddystoneBeacon.advertiseUrl(url);
     activeModes += '<span class="modes">Bluetooth</span>';
     mainWindow.webContents.send('status', [`${url} ${activeModes}`, 'Advertising', true]);
-    console.log('ble advertising: ' + url);
+    console.log(`ble advertising: ${url}`);
     if (ws) {
-      ws.send('ble advertising: ' + url);
+      ws.send(`ble advertising: ${url}`);
     }
   } catch (e) {
-    console.log('error: ' + e);
+    console.log(`error: ${e}`);
     mainWindow.webContents.send('status', [e.message, 'Error', false]);
     if (ws) {
-      ws.send('error: ' + e);
+      ws.send(`error: ${e}`);
     }
   }
 }
@@ -57,15 +57,15 @@ function setMdnsUrl(url, ws) {
     mdnsAd.start();
     activeModes += '<span class="modes">mDNS</span>';
     mainWindow.webContents.send('status', [`${url} ${activeModes}`, 'Advertising', true]);
-    console.log('mdns advertising: ' + url);
+    console.log(`mdns advertising: ${url}`);
     if (ws) {
-      ws.send('mdns advertising: ' + url);
+      ws.send(`mdns advertising: ${url}`);
     }
   } catch (e) {
-    console.log('error: ' + e);
+    console.log(`error: ${e}`);
     mainWindow.webContents.send('status', [e.message, 'Error', false]);
     if (ws) {
-      ws.send('error: ' + e);
+      ws.send(`error: ${e}`);
     }
   }
 }
@@ -136,7 +136,7 @@ app.on('ready', () => {
           'type': 'checkbox',
           'id': 'mode-ble',
           'checked': true,
-          'click': (item) => {
+          'click': item => {
             toggleMode(item);
           }
         },
@@ -159,7 +159,7 @@ app.on('ready', () => {
   modeMDNS = menu.items[2].submenu.items[1];
 
   mainWindow = new BrowserWindow({'width': 600, 'height': 400, 'resizable': false});
-  mainWindow.loadURL('file://' + __dirname + '/index.html');
+  mainWindow.loadURL(`file://${__dirname}/index.html`);
   mainWindow.on('closed', () => {
     mainWindow = null;
   });
@@ -170,8 +170,8 @@ app.on('ready', () => {
 
   wss.on('connection', ws => {
     ws.on('message', url => {
-      console.log('received: ' + url);
-      ws.send('received: ' + url);
+      console.log(`received: ${url}`);
+      ws.send(`received: ${url}`);
       setUrl(url, ws);
     });
   });
