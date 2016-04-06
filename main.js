@@ -72,6 +72,9 @@ function setMdnsUrl(url, ws) {
 
 function setUrl(url, ws) {
   activeModes = '';
+  if (mdnsAd) {
+    mdnsAd.stop();
+  }
   if (modeBLE.checked || modeMDNS.checked) {
     if (modeBLE.checked) {
       setBleUrl(url, ws);
