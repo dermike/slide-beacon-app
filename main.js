@@ -144,8 +144,8 @@ app.on('ready', () => {
           'label': 'mDNS',
           'type': 'checkbox',
           'id': 'mode-mdns',
-          'checked': true,
-          'click': (item) => {
+          'checked': false,
+          'click': item => {
             toggleMode(item);
           }
         }
