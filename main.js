@@ -38,15 +38,21 @@ function setBleUrl(url, ws) {
 
 function setMdnsUrl(url, ws) {
   try {
-    let urlParts = url.split('/');
-    mdnsAd = new mdns.Advertisement(mdns.tcp(urlParts[0].replace(':', '')), 80, {
+    let urlParts = url.split('/'),
+      protocol = urlParts[0].replace(':', ''),
+      port = protocol === 'https' ? 443 : 80,
+      host = urlParts[2],
+      path = urlParts.filter((part, i) => {
+        return i > 2 ? part : false;
+      }).join('/');
+    mdnsAd = new mdns.Advertisement(mdns.tcp(protocol), port, {
       'name': url,
       'txtRecord': {
-        'path': urlParts[3]
+        'path': path
       },
-      'host': urlParts[2],
+      'host': host,
       'domain': 'local',
-      'ip': urlParts[2]
+      'ip': host
     });
     mdnsAd.start();
     activeModes += '<span class="modes">mDNS</span>';
