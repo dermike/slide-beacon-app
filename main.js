@@ -6,22 +6,53 @@ let app = require('app'),
   WebSocketServer = require('ws').Server,
   wss = new WebSocketServer({ 'port': 1234 }),
   EddystoneBeacon = require('eddystone-beacon'),
-  mainWindow = null;
+  mainWindow = null,
+  mdns = require('mdns'),
+  mdnsAd = null;
+
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
   app.quit();
 });
 
-function setUrl(url, ws) {
+function setBleUrl(url, ws) {
   try {
     EddystoneBeacon.advertiseUrl(url);
     mainWindow.webContents.send('status', [url, 'Advertising', true]);
-    console.log('advertising: ' + url);
+    console.log('ble advertising: ' + url);
     if (ws) {
-      ws.send('advertising: ' + url);
+      ws.send('ble advertising: ' + url);
     }
     console.log();
+    setMdnsUrl(url, ws)
+  } catch (e) {
+    console.log('error: ' + e);
+    mainWindow.webContents.send('status', [e.message, 'Error', false]);
+    if (ws) {
+      ws.send('error: ' + e);
+    }
+    console.log();
+  }
+}
+
+function setMdnsUrl(url, ws) {
+  try {
+    let urlParts = url.split('/')
+    mdnsAd = new mdns.Advertisement(mdns.tcp(urlParts[0].replace(':', '')), 80, {
+      name: url,
+      txtRecord: {
+        path: urlParts[3]
+      },
+      host: urlParts[2],
+      domain: 'local',
+      ip: urlParts[2]
+    })
+    mdnsAd.start()
+    console.log('mdns advertising: ' + url);
+    if (ws) {
+      ws.send('mdns advertising: ' + url);
+    }
   } catch (e) {
     console.log('error: ' + e);
     mainWindow.webContents.send('status', [e.message, 'Error', false]);
@@ -49,6 +80,7 @@ app.on('ready', () => {
           'accelerator': 'Command+S',
           'click': () => {
             EddystoneBeacon.stop();
+            mdnsAd.stop();
             mainWindow.webContents.send('status', ['Use bookmarklet or <span class="key" aria-label="command">&#8984;</span> + <span class="key">A</span> to enter', 'Waiting', true]);
           }
         },
@@ -91,6 +123,6 @@ app.on('ready', () => {
   });
 
   ipc.on('set-url', (event, arg) => {
-    setUrl(arg);
+    setBleUrl(arg);
   });
 });
