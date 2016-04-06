@@ -48,6 +48,10 @@ body.error #header {
   color: #993333;
 }
 
+#status {
+  display: flex;
+}
+
 #status ul {
   width: 100%;
   display: table;
@@ -59,6 +63,15 @@ body.error #header {
 #status ul li {
   display: table-cell;
   padding: 2.2em 1em;
+}
+
+#status .modes {
+  font-size: 0.6em;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  padding: 0.5em;
+  vertical-align: middle;
+  margin: 0 0.5em;
 }
 
 .error {
@@ -109,6 +122,35 @@ input {
   color: #fafafa;
   text-transform: uppercase;
   outline: none;
+}
+
+.labels {
+  text-align: left;
+  display: flex;
+  justify-content: flex-end;
+  clear: left;
+}
+
+.label {
+  font-size: 0.8em;
+  margin: 1em 0 0.5em 0.5em;
+  color: #333;
+  padding: 0.3em 0.5em;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.label.on {
+  background-color: #b0ca3b;
+}
+
+.label.off {
+  background-color: #ccc;
+}
+
+.label.desc {
+  color: #fff;
+  cursor: inherit;
 }
 
 .hide {

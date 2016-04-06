@@ -22,6 +22,17 @@
     input.focus();
   });
 
+  ipc.on('mode', function updateMode(event, message) {
+    var el = document.getElementById(message[0]);
+    if (message[1]) {
+      el.classList.remove('off');
+      el.classList.add('on');
+    } else {
+      el.classList.remove('on');
+      el.classList.add('off');
+    }
+  });
+
   function setUrl(url) {
     input.value = '';
     dialog.classList.add('hide');
@@ -30,13 +41,31 @@
     }
   }
 
+  function toggleMode(mode) {
+    if (mode.id) {
+      ipc.send('set-mode', mode.id);
+    }
+  }
+
   dialog.addEventListener('click', function click(e) {
-    if (e.target.id === 'submit') {
+    switch (e.target.id) {
+    case 'submit':
       setUrl(input.value);
-    } else if (e.target.id === 'input') {
+      break;
+    case 'input':
       e.preventDefault();
-    } else {
+      break;
+    case 'mode-ble':
+      toggleMode(e.target);
+      break;
+    case 'mode-mdns':
+      toggleMode(e.target);
+      break;
+    case 'dialog':
       e.target.classList.add('hide');
+      break;
+    default:
+      break;  
     }
   });
 
