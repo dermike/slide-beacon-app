@@ -122,6 +122,7 @@ input {
   color: #fafafa;
   text-transform: uppercase;
   outline: none;
+  cursor: pointer;
 }
 
 .labels {
@@ -150,7 +151,7 @@ input {
 
 .label.desc {
   color: #fff;
-  cursor: inherit;
+  cursor: default;
 }
 
 .hide {
