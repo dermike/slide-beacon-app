@@ -146,7 +146,7 @@ app.on('ready', () => {
       ]
     },
     {
-      'label': 'Advertising modes',
+      'label': 'Broadcasting modes',
       'submenu': [
         {
           'label': 'Bluetooth',
