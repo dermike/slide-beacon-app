@@ -121,7 +121,6 @@ input {
   background-color: #d40963;
   color: #fafafa;
   text-transform: uppercase;
-  outline: none;
   cursor: pointer;
 }
 
@@ -139,6 +138,7 @@ input {
   padding: 0.3em 0.5em;
   cursor: pointer;
   border-radius: 5px;
+  border: none;
 }
 
 .label.on {
@@ -146,7 +146,8 @@ input {
 }
 
 .label.off {
-  background-color: #ccc;
+  color: #868686;
+  background-color: #e1e1e1;
 }
 
 .label.desc {
