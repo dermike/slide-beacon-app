@@ -1,10 +1,10 @@
 # electron-slide-beacon
 Mac OSX app from the [slide-beacon](https://github.com/dermike/slide-beacon) project made with [Electron](http://electron.atom.io).
-Share links from your computer using this app to broadcast them as an Eddystone URL ([Physical Web](https://github.com/google/physical-web)) bluetooth beacon.
+Share links from your computer using this app to broadcast them as a [Physical Web](https://github.com/google/physical-web) Eddystone URL bluetooth beacon or [mDNS](https://github.com/google/physical-web/blob/master/documentation/mDNS_Support.md).
 
 ![](https://raw.githubusercontent.com/dermike/electron-slide-beacon/master/screenshot/screenshot.jpg)
 
-**[Download pre-built binary](https://github.com/dermike/electron-slide-beacon/releases/download/0.2.0/EddystoneURL.zip)** or follow the instructions below to run with Electron or build your own binary.
+**[Download pre-built binary](https://github.com/dermike/electron-slide-beacon/releases/download/0.3.0/PhysicalWebBroadcast.zip)** or follow the instructions below to run with Electron or build your own binary.
 
 Use this [Eddystone URL bookmarklet](https://github.com/dermike/eddystone-bookmarklet) in your browser for quick sharing, or enter manually.
 
