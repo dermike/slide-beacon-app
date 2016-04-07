@@ -27,9 +27,11 @@
     if (message[1]) {
       el.classList.remove('off');
       el.classList.add('on');
+      el.setAttribute('aria-pressed', 'true');
     } else {
       el.classList.remove('on');
       el.classList.add('off');
+      el.setAttribute('aria-pressed', 'false');
     }
   });
 

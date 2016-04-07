@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eddystone URL Advertiser</title>
+    <title>Physical Web URL Advertiser</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
   <body class="error">
@@ -14,12 +14,11 @@
         <input type="text" id="input" />
         <input type="submit" id="submit" value="Set" />
         <div class="labels">
-          <div class="label desc">Advertising modes</div>
-          <div class="label on" id="mode-ble">Bluetooth</div>
-          <div class="label off" id="mode-mdns">mDNS</div>
+          <div class="label desc">Advertise URL using:</div>
+          <button class="label on" id="mode-ble" aria-pressed="true" aria-label="Advertise URL using Bluetooth">Bluetooth</button>
+          <button class="label off" id="mode-mdns" aria-pressed="false" aria-label="Advertise URL using mDNS">mDNS</button>
         </div>
       </div>
-
     </div>
 
     <div id="status"><ul><li id="message"></li></ul></div>
