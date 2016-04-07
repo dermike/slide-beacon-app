@@ -117,19 +117,19 @@ app.on('ready', () => {
       'label': 'Eddystone',
       'submenu': [
         {
-          'label': 'Advertise URL',
-          'accelerator': 'Command+A',
+          'label': 'Broadcast URL',
+          'accelerator': 'Command+B',
           'click': () => {
             mainWindow.webContents.send('enter-url', 'go');
           }
         },
         {
-          'label': 'Stop advertising',
+          'label': 'Stop broadcasting',
           'accelerator': 'Command+S',
           'click': () => {
             EddystoneBeacon.stop();
             stopMdns();
-            mainWindow.webContents.send('status', ['Use bookmarklet or <span class="key" aria-label="command">&#8984;</span> + <span class="key">A</span> to enter', 'Waiting', true]);
+            mainWindow.webContents.send('status', ['Use bookmarklet or <span class="key" aria-label="command">&#8984;</span> + <span class="key">B</span> to enter', 'Waiting', true]);
           }
         },
         {
@@ -182,7 +182,7 @@ app.on('ready', () => {
   });
 
   mainWindow.webContents.on('did-finish-load', () => {
-    mainWindow.webContents.send('status', ['Use bookmarklet or <span class="key" aria-label="command">&#8984;</span> + <span class="key">A</span> to enter', 'Waiting', true]);
+    mainWindow.webContents.send('status', ['Use bookmarklet or <span class="key" aria-label="command">&#8984;</span> + <span class="key">B</span> to enter', 'Waiting', true]);
   });
 
   wss.on('connection', ws => {
