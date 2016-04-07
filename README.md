@@ -8,9 +8,6 @@ Share links from your computer using this app to broadcast them as a [Physical W
 
 Use this [Eddystone URL bookmarklet](https://github.com/dermike/eddystone-bookmarklet) in your browser for quick sharing, or enter manually.
 
-Note:
-First try using Electron.
-
 ### Prerequisites to build
 
 * [Node.js](https://nodejs.org/)
