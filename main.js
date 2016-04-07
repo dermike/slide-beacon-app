@@ -23,10 +23,10 @@ function setBleUrl(url, ws) {
     try {
       EddystoneBeacon.advertiseUrl(url);
       activeModes += '<span class="modes">Bluetooth</span>';
-      mainWindow.webContents.send('status', [`${url} ${activeModes}`, 'Advertising', true]);
-      console.log(`ble advertising: ${url}`);
+      mainWindow.webContents.send('status', [`${url} ${activeModes}`, 'Broadcasting', true]);
+      console.log(`ble broadcasting: ${url}`);
       if (ws) {
-        ws.send(`ble advertising: ${url}`);
+        ws.send(`ble broadcasting: ${url}`);
       }
       resolve();
     } catch (e) {
@@ -61,10 +61,10 @@ function setMdnsUrl(url, ws) {
       });
       mdnsAd.start();
       activeModes += '<span class="modes">mDNS</span>';
-      mainWindow.webContents.send('status', [`${url} ${activeModes}`, 'Advertising', true]);
-      console.log(`mdns advertising: ${url}`);
+      mainWindow.webContents.send('status', [`${url} ${activeModes}`, 'Broadcasting', true]);
+      console.log(`mdns broadcasting: ${url}`);
       if (ws) {
-        ws.send(`mdns advertising: ${url}`);
+        ws.send(`mdns broadcasting: ${url}`);
       }
       resolve();
     } catch (e) {
@@ -99,7 +99,7 @@ function setUrl(url, ws) {
       setMdnsUrl(url, ws);
     }
   } else {
-    mainWindow.webContents.send('status', ['Choose at least one advertising mode', 'Error', false]);
+    mainWindow.webContents.send('status', ['Choose at least one broadcasting mode', 'Error', false]);
   }
 }
 
