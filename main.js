@@ -78,11 +78,15 @@ function setMdnsUrl(url, ws) {
   });
 }
 
-function setUrl(url, ws) {
-  activeModes = '';
+function stopMdns() {
   if (mdnsAd) {
     mdnsAd.stop();
   }
+}
+
+function setUrl(url, ws) {
+  activeModes = '';
+  stopMdns();
   if (modeBLE.checked || modeMDNS.checked) {
     if (modeBLE.checked) {
       setBleUrl(url, ws).then(() => {
@@ -124,9 +128,7 @@ app.on('ready', () => {
           'accelerator': 'Command+S',
           'click': () => {
             EddystoneBeacon.stop();
-            if (mdnsAd) {
-              mdnsAd.stop();
-            }
+            stopMdns();
             mainWindow.webContents.send('status', ['Use bookmarklet or <span class="key" aria-label="command">&#8984;</span> + <span class="key">A</span> to enter', 'Waiting', true]);
           }
         },
