@@ -1,11 +1,12 @@
 (function slidebeacon() {
-  var ipc = require('electron').ipcRenderer,
+  'use strict';
+  let ipc = require('electron').ipcRenderer,
     status = document.getElementById('message'),
     header = document.getElementById('header'),
     dialog = document.getElementById('dialog'),
     input = document.getElementById('input');
 
-  ipc.on('status', function ipcstatus(event, message) {
+  ipc.on('status', (event, message) => {
     if (message.length === 3) {
       status.innerHTML = message[0];
       header.innerHTML = message[1];
@@ -22,8 +23,8 @@
     input.focus();
   });
 
-  ipc.on('mode', function updateMode(event, message) {
-    var el = document.getElementById(message[0]);
+  ipc.on('mode', (event, message) => {
+    let el = document.getElementById(message[0]);
     if (message[1]) {
       el.classList.remove('off');
       el.classList.add('on');
@@ -49,7 +50,7 @@
     }
   }
 
-  dialog.addEventListener('click', function click(e) {
+  dialog.addEventListener('click', e => {
     switch (e.target.id) {
     case 'submit':
       setUrl(input.value);
@@ -67,11 +68,11 @@
       e.target.classList.add('hide');
       break;
     default:
-      break;  
+      break;
     }
   });
 
-  document.addEventListener('keydown', function keydown(e) {
+  document.addEventListener('keydown', e => {
     if (e.target.id === 'input' && e.keyCode === 13) {
       setUrl(input.value);
     } else if (e.keyCode === 27) {
