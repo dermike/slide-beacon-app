@@ -18,7 +18,7 @@
     }
   });
 
-  ipc.on('enter-url', function enterurl() {
+  ipc.on('enter-url', () => {
     dialog.classList.remove('hide');
     input.focus();
   });
