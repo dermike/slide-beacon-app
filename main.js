@@ -1,3 +1,4 @@
+/* eslint no-console: 0 */
 'use strict';
 let app = require('app'),
   BrowserWindow = require('browser-window'),
