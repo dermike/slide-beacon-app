@@ -6,6 +6,19 @@
     dialog = document.getElementById('dialog'),
     input = document.getElementById('input');
 
+  function showDialog(show) {
+    if (show) {
+      header.setAttribute('tabindex', '-1');
+      dialog.classList.remove('hide');
+      dialog.setAttribute('aria-hidden', 'false');
+      input.focus();
+    } else {
+      header.setAttribute('tabindex', '1')
+      dialog.classList.add('hide');
+      dialog.setAttribute('aria-hidden', 'true');
+    }
+  }
+
   ipc.on('status', (event, message) => {
     if (message.length === 3) {
       status.innerHTML = message[0];
@@ -19,8 +32,7 @@
   });
 
   ipc.on('enter-url', () => {
-    dialog.classList.remove('hide');
-    input.focus();
+    showDialog(true);
   });
 
   ipc.on('mode', (event, message) => {
@@ -38,7 +50,7 @@
 
   function setUrl(url) {
     input.value = '';
-    dialog.classList.add('hide');
+    showDialog(false);
     if (url) {
       ipc.send('set-url', url);
     }
@@ -65,10 +77,20 @@
       toggleMode(e.target);
       break;
     case 'dialog':
-      e.target.classList.add('hide');
+      showDialog(false);
       break;
     default:
       break;
+    }
+  });
+
+  header.addEventListener('click', () => {
+    showDialog(true);
+  });
+
+  header.addEventListener('keydown', e => {
+    if (e.keyCode === 13 || e.keyCode === 32) {
+      showDialog(true);
     }
   });
 
@@ -76,7 +98,7 @@
     if (e.target.id === 'input' && e.keyCode === 13) {
       setUrl(input.value);
     } else if (e.keyCode === 27) {
-      dialog.classList.add('hide');
+      showDialog(false);
       input.value = '';
     }
   });

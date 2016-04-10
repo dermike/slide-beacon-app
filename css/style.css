@@ -42,6 +42,7 @@ body {
   font-size: 80px;
   text-align: center;
   margin: 0;
+  cursor: pointer;
 }
 
 body.error #header {
@@ -52,7 +53,7 @@ body.error #header {
   display: flex;
 }
 
-#status ul {
+#status {
   width: 100%;
   display: table;
   table-layout: fixed;
@@ -60,7 +61,7 @@ body.error #header {
   padding: 0;
 }
 
-#status ul li {
+#status #message {
   display: table-cell;
   padding: 2.2em 1em;
 }
