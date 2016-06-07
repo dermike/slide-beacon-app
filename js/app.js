@@ -1,10 +1,10 @@
-(function slidebeacon() {
-  'use strict';
-  let ipc = require('electron').ipcRenderer,
-    status = document.getElementById('message'),
-    header = document.getElementById('header'),
-    dialog = document.getElementById('dialog'),
-    input = document.getElementById('input');
+'use strict';
+{
+  const {ipcRenderer} = require('electron');
+  const status = document.getElementById('message');
+  const header = document.getElementById('header');
+  const dialog = document.getElementById('dialog');
+  const input = document.getElementById('input');
 
   function showDialog(show) {
     if (show) {
@@ -13,13 +13,13 @@
       dialog.setAttribute('aria-hidden', 'false');
       input.focus();
     } else {
-      header.setAttribute('tabindex', '1')
+      header.setAttribute('tabindex', '1');
       dialog.classList.add('hide');
       dialog.setAttribute('aria-hidden', 'true');
     }
   }
 
-  ipc.on('status', (event, message) => {
+  ipcRenderer.on('status', (event, message) => {
     if (message.length === 3) {
       status.innerHTML = message[0];
       header.innerHTML = message[1];
@@ -31,11 +31,11 @@
     }
   });
 
-  ipc.on('enter-url', () => {
+  ipcRenderer.on('enter-url', () => {
     showDialog(true);
   });
 
-  ipc.on('mode', (event, message) => {
+  ipcRenderer.on('mode', (event, message) => {
     let el = document.getElementById(message[0]);
     if (message[1]) {
       el.classList.remove('off');
@@ -52,13 +52,13 @@
     input.value = '';
     showDialog(false);
     if (url) {
-      ipc.send('set-url', url);
+      ipcRenderer.send('set-url', url);
     }
   }
 
   function toggleMode(mode) {
     if (mode.id) {
-      ipc.send('set-mode', mode.id);
+      ipcRenderer.send('set-mode', mode.id);
     }
   }
 
@@ -102,4 +102,4 @@
       input.value = '';
     }
   });
-})();
+}

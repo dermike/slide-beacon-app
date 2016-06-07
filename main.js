@@ -1,14 +1,14 @@
 /* eslint no-console: 0 */
 'use strict';
-let app = require('app'),
-  BrowserWindow = require('browser-window'),
-  ipc = require('electron').ipcMain,
-  Menu = require('menu'),
-  WebSocketServer = require('ws').Server,
-  wss = new WebSocketServer({ 'port': 1234 }),
-  EddystoneBeacon = require('eddystone-beacon'),
-  mainWindow = null,
-  mdns = require('mdns'),
+const {app} = require('electron');
+const {BrowserWindow} = require('electron');
+const {ipcMain} = require('electron');
+const {Menu} = require('electron');
+const WebSocketServer = require('ws').Server;
+const wss = new WebSocketServer({ 'port': 1234 });
+const EddystoneBeacon = require('eddystone-beacon');
+const mdns = require('mdns');
+let mainWindow = null,
   mdnsAd = null,
   modeBLE = null,
   modeMDNS = null,
@@ -194,11 +194,11 @@ app.on('ready', () => {
     });
   });
 
-  ipc.on('set-url', (event, arg) => {
+  ipcMain.on('set-url', (event, arg) => {
     setUrl(arg);
   });
 
-  ipc.on('set-mode', (event, arg) => {
+  ipcMain.on('set-mode', (event, arg) => {
     switch (arg) {
     case 'mode-ble':
       modeBLE.checked ? modeBLE.checked = false : modeBLE.checked = true;
