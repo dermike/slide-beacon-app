@@ -21,8 +21,7 @@
 
   ipcRenderer.on('status', (event, message) => {
     if (message.length === 3) {
-      status.innerHTML = message[0];
-      header.innerHTML = message[1];
+      [status.innerHTML, header.innerHTML] = message;
       if (message[2]) {
         document.body.classList.remove('error');
       } else {

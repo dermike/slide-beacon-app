@@ -1,9 +1,6 @@
 /* eslint no-console: 0 */
 'use strict';
-const {app} = require('electron');
-const {BrowserWindow} = require('electron');
-const {ipcMain} = require('electron');
-const {Menu} = require('electron');
+const { app, BrowserWindow, ipcMain, Menu } = require('electron');
 const WebSocketServer = require('ws').Server;
 const wss = new WebSocketServer({ 'port': 1234 });
 const EddystoneBeacon = require('eddystone-beacon');
