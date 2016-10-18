@@ -7,6 +7,7 @@ const EddystoneBeacon = require('eddystone-beacon');
 const mdns = require('mdns');
 let mainWindow = null,
   mdnsAd = null,
+  stopAd = null,
   modeBLE = null,
   modeMDNS = null,
   activeModes = '';
@@ -91,10 +92,12 @@ function setUrl(url, ws) {
         if (modeMDNS.checked) {
           setMdnsUrl(url, ws);
         }
+        stopAd.enabled = true;
       });
     }
     if (!modeBLE.checked && modeMDNS.checked) {
       setMdnsUrl(url, ws);
+      stopAd.enabled = true;
     }
   } else {
     mainWindow.webContents.send('status', ['Choose at least one broadcasting mode', 'Error', false]);
@@ -124,6 +127,7 @@ app.on('ready', () => {
         {
           'label': 'Stop broadcasting',
           'accelerator': 'Command+S',
+          'enabled': false,
           'click': () => {
             EddystoneBeacon.stop();
             stopMdns();
@@ -171,6 +175,7 @@ app.on('ready', () => {
 
   let menu = Menu.buildFromTemplate(menuTemplate);
   Menu.setApplicationMenu(menu);
+  stopAd = menu.items[0].submenu.items[1];
   modeBLE = menu.items[2].submenu.items[0];
   modeMDNS = menu.items[2].submenu.items[1];
 
