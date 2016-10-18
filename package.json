@@ -1,16 +1,16 @@
 {
-  "name": "electron-slide-beacon",
-  "version": "0.3.3",
+  "name": "slide-beacon-app",
+  "version": "0.3.5",
   "description": "Electron app to broadcast URLs as an Eddystone Physical Web beacon",
   "main": "main.js",
   "scripts": {
-    "package": "node ./node_modules/electron-packager/cli.js ./ PhysicalWebBroadcast --platform=darwin --arch=x64 --version=1.4.0 --ignore=node_modules/electron-rebuild --asar --icon=icon.icns",
-    "electron": "node ./node_modules/electron-prebuilt/cli.js .",
+    "package": "node ./node_modules/electron-packager/cli.js ./ SlideBeacon --platform=darwin --arch=x64 --version=1.4.3 --ignore=node_modules/electron-rebuild --asar --icon=icon.icns",
+    "electron": "node ./node_modules/electron/cli.js .",
     "rebuild": "node ./node_modules/.bin/electron-rebuild"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/dermike/electron-slide-beacon.git"
+    "url": "git://github.com/dermike/slide-beacon-app.git"
   },
   "keywords": [
     "electron"
@@ -18,8 +18,8 @@
   "author": "Mikael Jergefelt",
   "license": "ISC",
   "devDependencies": {
-    "electron-packager": "8.0.0",
-    "electron-prebuilt": "1.4.0",
+    "electron-packager": "8.1.0",
+    "electron": "1.4.3",
     "electron-rebuild": "1.2.1"
   },
   "dependencies": {
