@@ -28,4 +28,4 @@ node_modules
 .lock-wscript
 
 #build dir
-PhysicalWebBroadcast-darwin-x64
+SlideBeacon-darwin-x64
