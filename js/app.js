@@ -1,6 +1,6 @@
 'use strict';
 {
-  const {ipcRenderer} = require('electron');
+  const { ipcRenderer, shell } = require('electron');
   const status = document.getElementById('message');
   const header = document.getElementById('header');
   const dialog = document.getElementById('dialog');
@@ -85,6 +85,13 @@
 
   header.addEventListener('click', () => {
     showDialog(true);
+  });
+
+  status.addEventListener('click', (e) => {
+    if (e.target.tagName === 'A') {
+      e.preventDefault();
+      shell.openExternal(e.target.href);
+    }
   });
 
   header.addEventListener('keydown', e => {

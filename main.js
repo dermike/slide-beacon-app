@@ -127,7 +127,8 @@ app.on('ready', () => {
           'click': () => {
             EddystoneBeacon.stop();
             stopMdns();
-            mainWindow.webContents.send('status', ['Use reveal.js presentation plugin or <span class="key" aria-label="command">&#8984;</span> + <span class="key">B</span> to enter URL', 'Waiting', true]);
+            stopAd.enabled = false;
+            mainWindow.webContents.send('status', ['<span class="key" aria-label="command">&#8984;</span> + <span class="key">B</span> to enter URL (or use <a target="_new" href="https://github.com/dermike/slide-beacon">reveal.js presentation plugin</a>)', 'Waiting', true]);
           }
         },
         {
@@ -180,7 +181,7 @@ app.on('ready', () => {
   });
 
   mainWindow.webContents.on('did-finish-load', () => {
-    mainWindow.webContents.send('status', ['Use reveal.js presentation plugin or <span class="key" aria-label="command">&#8984;</span> + <span class="key">B</span> to enter URL', 'Waiting', true]);
+    mainWindow.webContents.send('status', ['<span class="key" aria-label="command">&#8984;</span> + <span class="key">B</span> to enter URL (or use <a target="_new" href="https://github.com/dermike/slide-beacon">reveal.js presentation plugin</a>)', 'Waiting', true]);
   });
 
   wss.on('connection', ws => {
