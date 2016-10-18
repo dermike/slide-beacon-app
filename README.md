@@ -5,7 +5,7 @@
 Mac OSX app from the [slide-beacon](https://github.com/dermike/slide-beacon) project made with [Electron](http://electron.atom.io).
 Share links from your computer using this app to broadcast them as a [Physical Web](https://github.com/google/physical-web) Eddystone URL bluetooth beacon or [mDNS](https://github.com/google/physical-web/blob/master/documentation/mDNS_Support.md).
 
-To discover shared URLs, use the [physical-web-scan-app](https://github.com/dermike/physical-web-scan-app), or see the [Physical Web website](https://google.github.io/physical-web/try-physical-web) for Android and iOS clients.
+To discover shared URLs wirelessly via bluetooth, use the [physical-web-scan-app](https://github.com/dermike/physical-web-scan-app), or see the [Physical Web website](https://google.github.io/physical-web/try-physical-web) for Android and iOS clients.
 
 Enter URLs manually or use this [reveal.js plugin](https://github.com/dermike/slide-beacon) to share links in presentational slides.
 
