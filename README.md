@@ -9,7 +9,7 @@ To discover shared URLs wirelessly via bluetooth, use the [physical-web-scan-app
 
 Enter URLs manually or use this [reveal.js plugin](https://github.com/dermike/slide-beacon) to share links in presentational slides.
 
-**[Download pre-built binary](https://github.com/dermike/slide-beacon-app/releases/download/0.3.5/SlideBeacon.zip)** or follow the instructions below to run with Electron or build your own binary.
+**[Download pre-built binary](https://github.com/dermike/slide-beacon-app/releases/download/0.4.0/SlideBeacon.zip)** or follow the instructions below to run with Electron or build your own binary.
 
 ### Prerequisites to build
 
