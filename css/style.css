@@ -172,6 +172,56 @@ input {
   box-shadow: 1px 1px #660033;
 }
 
+.url-wrapper {
+  position: relative;
+}
+
+.url-history {
+  position: absolute;
+  bottom: calc(0px - 100%);
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  background-color: transparent;
+}
+
+.url-history li, .url-history li a {
+  padding: .25em 0;
+  color: #000;
+  display: block;
+}
+
+.url-history li {
+  opacity: .5;
+}
+
+.url-history li:hover {
+  opacity: .8;
+}
+
+.url-history li:nth-child(5) {
+  background-color: #f1f1f1;
+}
+
+.url-history li:nth-child(4) {
+  background-color: #e1e1e1;
+}
+
+.url-history li:nth-child(3) {
+  background-color: #d1d1d1;
+}
+
+.url-history li:nth-child(2) {
+  background-color: #c1c1c1;
+}
+
+.url-history li:nth-child(1) {
+  background-color: #b1b1b1;
+}
+
 @keyframes fadeInDown {
   0% {
     opacity: 0;

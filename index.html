@@ -11,8 +11,12 @@
 
     <div id="dialog" class="hide" aria-hidden="true">
       <div class="vertical-center" style="height: 45px; width: 80%;">
-        <input type="text" id="input" aria-label="Enter URL to broadcast" />
-        <input type="submit" id="submit" value="Set" />
+        <div class="url-wrapper">
+          <input type="text" id="input" aria-label="Enter URL to broadcast" />
+          <input type="submit" id="submit" value="Set" />
+          <ul class="url-history">
+          </ul>
+        </div>
         <div class="labels">
           <div class="label desc">Broadcast URL using:</div>
           <button class="label on" id="mode-ble" aria-pressed="true" aria-label="Broadcast URL using Bluetooth">Bluetooth</button>

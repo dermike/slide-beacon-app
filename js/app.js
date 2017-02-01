@@ -6,8 +6,29 @@
   const dialog = document.getElementById('dialog');
   const input = document.getElementById('input');
 
+  function renderHistory(history) {
+    let list = history ? history : [],
+      listEl = document.querySelector('.url-history'),
+      items = list.map(item => {
+        return `<li><a href="${item}">${item}</a></li>`;
+      }).join('');
+    listEl.innerHTML = items;
+  }
+
+  function addToHistory(url) {
+    let previousHistory = JSON.parse(localStorage.getItem('history')) || [],
+      newHistory = previousHistory.filter(item => item !== url);
+    if (newHistory.length >= 5) {
+      newHistory.shift();
+    }
+    newHistory.push(url);
+    localStorage.setItem('history', JSON.stringify(newHistory));
+    renderHistory(newHistory);
+  }
+
   function showDialog(show) {
     if (show) {
+      renderHistory(JSON.parse(localStorage.getItem('history')));
       header.setAttribute('tabindex', '-1');
       dialog.classList.remove('hide');
       dialog.setAttribute('aria-hidden', 'false');
@@ -24,6 +45,9 @@
       [status.innerHTML, header.innerHTML] = message;
       if (message[2]) {
         document.body.classList.remove('error');
+        if (message[0].split(' ')[0].substr(0, 4) === 'http') {
+          addToHistory(message[0].split(' ')[0]);
+        }
       } else {
         document.body.classList.add('error');
       }
@@ -107,5 +131,10 @@
       showDialog(false);
       input.value = '';
     }
+  });
+
+  document.querySelector('.url-history').addEventListener('click', e => {
+    e.preventDefault();
+    setUrl(e.target.innerText);
   });
 }

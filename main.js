@@ -179,7 +179,7 @@ app.on('ready', () => {
   modeBLE = menu.items[2].submenu.items[0];
   modeMDNS = menu.items[2].submenu.items[1];
 
-  mainWindow = new BrowserWindow({'width': 600, 'height': 400, 'resizable': false});
+  mainWindow = new BrowserWindow({'width': 600, 'height': 450, 'resizable': false});
   mainWindow.loadURL(`file://${__dirname}/index.html`);
   mainWindow.on('closed', () => {
     mainWindow = null;
