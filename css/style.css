@@ -196,30 +196,17 @@ input {
 
 .url-history li {
   opacity: .5;
+  background-color: #e1e1e1;
+}
+
+.url-history li.fadeOut {
+  animation-fill-mode: both;
+  animation-duration: 0.4s;
+  animation-name: fadeOutUp;
 }
 
 .url-history li:hover {
   opacity: .8;
-}
-
-.url-history li:nth-child(5) {
-  background-color: #f1f1f1;
-}
-
-.url-history li:nth-child(4) {
-  background-color: #e1e1e1;
-}
-
-.url-history li:nth-child(3) {
-  background-color: #d1d1d1;
-}
-
-.url-history li:nth-child(2) {
-  background-color: #c1c1c1;
-}
-
-.url-history li:nth-child(1) {
-  background-color: #b1b1b1;
 }
 
 @keyframes fadeInDown {
@@ -231,5 +218,17 @@ input {
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes fadeOutUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
   }
 }

@@ -136,6 +136,13 @@ app.on('ready', () => {
           }
         },
         {
+          'label': 'Clear history',
+          'accelerator': 'Command+H',
+          'click': () => {
+            mainWindow.webContents.send('clear-history');
+          }
+        },
+        {
           'label': 'Quit',
           'accelerator': 'Command+Q',
           'click': () => { app.quit(); }

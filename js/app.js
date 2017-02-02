@@ -26,6 +26,19 @@
     renderHistory(newHistory);
   }
 
+  function clearHistory() {
+    let list = document.querySelectorAll('.url-history li');
+    localStorage.removeItem('history');
+    Array.prototype.forEach.call(list, (el, i) => {
+      setTimeout(() => {
+        el.classList.add('fadeOut');
+        setTimeout(() => {
+          el.parentNode.removeChild(el);
+        }, i + 1 * 400);
+      }, i * 200);
+    });
+  }
+
   function showDialog(show) {
     if (show) {
       renderHistory(JSON.parse(localStorage.getItem('history')));
@@ -56,6 +69,10 @@
 
   ipcRenderer.on('enter-url', () => {
     showDialog(true);
+  });
+
+  ipcRenderer.on('clear-history', () => {
+    clearHistory();
   });
 
   ipcRenderer.on('mode', (event, message) => {
