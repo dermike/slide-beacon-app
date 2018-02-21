@@ -1,6 +1,6 @@
 {
   "name": "slide-beacon-app",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Electron app to broadcast URLs as an Eddystone Physical Web beacon",
   "main": "main.js",
   "scripts": {
