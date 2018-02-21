@@ -24,6 +24,9 @@ After cloning or downloading this repo, install the dependencies listed in `pack
 npm install
 ```
 
+Note: this currently uses `npm-shrinkwrap` to get latest version of [Bleno](https://github.com/noble/bleno) with High Sierra support.
+
+
 Rebuild native modules for Electron use:
 
 ```sh
