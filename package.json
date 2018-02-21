@@ -4,7 +4,7 @@
   "description": "Electron app to broadcast URLs as an Eddystone Physical Web beacon",
   "main": "main.js",
   "scripts": {
-    "package": "node ./node_modules/electron-packager/cli.js ./ SlideBeacon --platform=darwin --arch=x64 --electron-version=1.4.15 --ignore=node_modules/electron-rebuild --asar --icon=icon.icns",
+    "package": "node ./node_modules/electron-packager/cli.js ./ SlideBeacon --platform=darwin --arch=x64 --electron-version=1.8.2 --ignore=node_modules/electron-rebuild --asar --icon=icon.icns --overwrite",
     "electron": "node ./node_modules/electron/cli.js .",
     "rebuild": "node ./node_modules/.bin/electron-rebuild"
   },
@@ -18,13 +18,13 @@
   "author": "Mikael Jergefelt",
   "license": "ISC",
   "devDependencies": {
-    "electron-packager": "8.5.1",
-    "electron": "1.4.15",
-    "electron-rebuild": "1.5.7"
+    "electron-packager": "11.0.1",
+    "electron": "1.8.2",
+    "electron-rebuild": "1.7.3"
   },
   "dependencies": {
-    "mdns": "2.3.3",
     "eddystone-beacon": "1.0.7",
-    "ws": "2.0.1"
+    "mdns": "^2.3.4",
+    "ws": "^4.0.0"
   }
 }
