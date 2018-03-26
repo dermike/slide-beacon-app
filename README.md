@@ -9,7 +9,7 @@ To discover shared URLs wirelessly via bluetooth, use the [physical-web-scan-app
 
 Enter URLs manually or use this [reveal.js plugin](https://github.com/dermike/slide-beacon) to share links in presentational slides.
 
-**[Download pre-built binary](https://github.com/dermike/slide-beacon-app/releases/download/0.4.2/SlideBeacon.zip)** or follow the instructions below to run with Electron or build your own binary.
+**[Download pre-built binary](https://github.com/dermike/slide-beacon-app/releases/download/0.4.3/SlideBeacon.zip)** or follow the instructions below to run with Electron or build your own binary.
 
 ### Prerequisites to build
 
@@ -24,7 +24,7 @@ After cloning or downloading this repo, install the dependencies listed in `pack
 npm install
 ```
 
-Note: this currently uses `npm-shrinkwrap` to get latest version of [Bleno](https://github.com/noble/bleno) with High Sierra support.
+Note: this currently uses a git url to get latest version of [Bleno](https://github.com/noble/bleno) with High Sierra support.
 
 
 Rebuild native modules for Electron use:
