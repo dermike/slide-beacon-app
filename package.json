@@ -23,7 +23,7 @@
     "electron-rebuild": "1.7.3"
   },
   "dependencies": {
-    "eddystone-beacon": "git+https://github.com/don/node-eddystone-beacon.git",
+    "eddystone-beacon": "https://github.com/don/node-eddystone-beacon/tarball/master",
     "mdns": "^2.3.4",
     "ws": "^5.1.0"
   }
